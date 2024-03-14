@@ -1,34 +1,10 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
-export type AddScheduleDocument = HydratedDocument<AddSchedule>;
+export type ScheduleDocument = HydratedDocument<Schedule>;
 
 @Schema()
-class StatusInformation {
-  @Prop({ required: true })
-  statusCode: number;
-
-  @Prop({ required: true })
-  status: string;
-
-  @Prop({ required: true })
-  colorStatus: string;
-}
-
-@Schema()
-class TypeInformation {
-  @Prop({ required: true })
-  type: number;
-
-  @Prop({ required: true })
-  colorBackgroundType: string;
-
-  @Prop({ required: true })
-  colorType: string;
-}
-
-@Schema()
-export class AddSchedule {
+export class Schedule {
   @Prop({ required: true, type: Date })
   dateStartEvent: Date;
 
@@ -47,11 +23,19 @@ export class AddSchedule {
   @Prop({ required: true, type: String })
   description: string;
 
-  @Prop({ type: StatusInformation })
-  statusInformation: StatusInformation;
+  @Prop({ required: true, type: Object })
+  statusInformation: {
+    statusCode: number;
+    status: string;
+    colorStatus: string;
+  };
 
-  @Prop({ type: TypeInformation })
-  typeInformation: TypeInformation;
+  @Prop({ required: true, type: Object })
+  typeInformation: {
+    type: number;
+    colorBackgroundType: string;
+    colorType: string;
+  };
 }
 
-export const scheduleSchema = SchemaFactory.createForClass(AddSchedule);
+export const scheduleSchema = SchemaFactory.createForClass(Schedule);
