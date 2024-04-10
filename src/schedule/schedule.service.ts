@@ -8,12 +8,12 @@ import { CreateScheduleDto } from 'src/dto/create-schedule.dto';
 export class ScheduleService {
   constructor(@InjectModel(Schedule.name) private scheduleModel: Model<ScheduleDocument>) {}
 
-  async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {
+  async create(createScheduleDto: CreateScheduleDto): Promise<Schedule> {//<-- Post
     const createSchedule = new this.scheduleModel(createScheduleDto);
     return createSchedule.save();
   }
 
-  async findAll(): Promise<Schedule[]> {
+  async findAll(): Promise<Schedule[]> {//<-- Get
     return this.scheduleModel.find().exec();
   }
 }

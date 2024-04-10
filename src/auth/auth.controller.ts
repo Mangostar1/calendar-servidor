@@ -1,11 +1,16 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Put } from '@nestjs/common';
 
 @Controller('auth')
 export class AuthController {
 
   @Get()
-  getauth(){
+  getAuth(){
     return 'get de auth';
+  }
+
+  @Put()
+  putAuth(){
+    return 'put de auth';
   }
 
 }
