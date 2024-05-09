@@ -6,10 +6,10 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   
   //locaal: http://127.0.0.1:5500
-  //prod: https://mangostar1.github.io/Calendar/
+  //prod: https://mangostar1.github.io/Calendar
   
   app.enableCors({
-    origin: 'https://mangostar1.github.io/Calendar/',
+    origin: 'https://mangostar1.github.io/Calendar',
   });
   
   await app.listen(process.env.PORT);
