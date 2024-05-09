@@ -9,7 +9,7 @@ async function bootstrap() {
   //prod: https://mangostar1.github.io/Calendar
   
   app.enableCors({
-    origin: 'https://mangostar1.github.io/Calendar',
+    origin: 'https://mangostar1.github.io',
   });
   
   await app.listen(process.env.PORT);
