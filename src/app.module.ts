@@ -8,7 +8,12 @@ import { ScheduleModule } from './schedule/schedule.module';
 import 'dotenv/config'
 
 @Module({
-  imports: [AuthModule, UserModule, ScheduleModule, MongooseModule.forRoot('mongodb+srv://mangostar:'+ process.env.MONGO_PASS +'@calendar.s13gdnk.mongodb.net/')],
+  imports: [
+    MongooseModule.forRoot(process.env.MONGO_URL),
+    AuthModule, 
+    UserModule, 
+    ScheduleModule
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
